@@ -1,0 +1,96 @@
+doctype html
+html(lang="he")
+    head
+        meta(charset='UTF-8')
+        title TextSimplification
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+        link(rel='icon', href='../css/logo.png')
+        script(src='https://unpkg.com/axios/dist/axios.min.js')
+        link(rel='stylesheet' type='text/css' href='../css/styles.css')
+    .container
+        header.con-header
+            h1
+                | MicroServices Project - Array;
+                .info-group Group 100 -
+                .info-users 316055144 - Dor Swisa
+                .info-users 205579808 - Guy Cohen
+                .info-users 311425912 - Tamir Abutbul
+        section.bgcolor-1
+            span.input--haruki
+                textarea#input-text.input__field.input__field--haruki(type='text')
+                label.input__label.input__label--haruki(for='input-text')
+                    span.input__label-content.input__label-content--haruki
+            button#simplify.button.button--nina.button--text-thick.button--text-upper.button--size-s(data-text='פרק')
+                span ק
+                span ר
+                span פ
+
+        section.bgcolor-2
+            h2.nomargin-top &#x5D8;&#x5D5;&#x5E7;&#x5E0;&#x5D9;&#x5D6;&#x5E6;&#x5D9;&#x5D4;
+            .results
+            h4.no-results .&#x5DC;&#x5D7;&#x5E5; &#x5E2;&#x5DC; &quot;&#x5E4;&#x5E9;&#x5D8;&quot; &#x5E2;&#x5DC; &#x5DE;&#x5E0;&#x5EA; &#x5DC;&#x5E8;&#x5D0;&#x5D5;&#x5EA; &#x5EA;&#x5D5;&#x5E6;&#x5D0;&#x5D5;&#x5EA;
+    script.
+        (function() {
+            if (!String.prototype.trim) {
+                (function() {
+                    // Make sure we trim BOM and NBSP
+                    var rtrim = /^[\\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                    String.prototype.trim = function() {
+                        return this.replace(rtrim, '');
+                    };
+                })();
+            }
+            [].slice.call( document.querySelectorAll( 'textarea.input__field' ) ).forEach( function( inputEl ) {
+                // in case the input is already filled..
+                if( inputEl.value.trim() !== '' ) {
+                    inputEl.parentElement.classList.add('input--filled');
+                }
+                // events:
+                inputEl.addEventListener( 'focus', onInputFocus );
+                inputEl.addEventListener( 'blur', onInputBlur );
+            } );
+            function onInputFocus( ev ) {
+                ev.target.parentElement.classList.add('input--filled');
+            }
+            function onInputBlur( ev ) {
+                if( ev.target.value.trim() === '' ) {
+                    ev.target.parentElement.classList.remove('input--filled');
+                }
+            }
+            document.getElementById("simplify").addEventListener('click', tokenizeFunc);
+            function tokenizeFunc() {
+                var text = document.querySelectorAll( 'textarea.input__field' )[0].value.trim().replaceAll(/\n|\,/g, "")
+                var sentences = text.split(/[\.|\?]+/).filter(el => el);
+                document.getElementsByClassName("results")[0].innerHTML = ""
+                if(sentences.length == 0)
+                {
+                    document.getElementsByClassName('no-results')[0].textContent = '."לא נמצאו תוצאות, עלייך להזין טקסט ולאחר מכן ללחוץ על "פשט';
+                }
+                else
+                {
+                    var count = 1;
+                    sentences.forEach( function (senteceEl) {
+                        var data = '{"text": "'+senteceEl+'  "}';
+                        axios.post("/tokenize", {
+                            body: data
+                        })
+                            .then(function (response) {
+                                console.log(response.data)
+                                var wordsarr = response.data.dep_tree.split('\n').filter(Boolean);
+                                wordsarr = wordsarr.map(el => el.replaceAll("ppp", "\""));
+                                wordsarr = [].concat(wordsarr.map(el => el.split('\t').filter(Boolean).slice(0, -2)))
+                                console.log(wordsarr);
+                                var output = `<h2 class="sentence"> : משפט ${count}`
+                                wordsarr.forEach(el => output+= `<div class="word">${el[1]}</div>`)
+                                output += `</h2>`;
+                                document.getElementsByClassName("results")[0].innerHTML = document.getElementsByClassName("results")[0].innerHTML + output;
+                                document.getElementsByClassName('no-results')[0].textContent = '';
+                                count++;
+                            })
+                            .catch(function (error) {
+                                document.getElementsByClassName('no-results')[0].textContent = '.לא נמצאו תוצאות, עבור על הטקסט שהזנת';
+                            });
+                    });
+                }
+            }
+        })();
