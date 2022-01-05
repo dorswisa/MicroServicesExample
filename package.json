@@ -1,7 +1,7 @@
 {
-  "name": "Text-Simplification webApi",
+  "name": "MicroServices-Arrays",
   "version": "1.0.0",
-  "description": "web api for text simplification",
+  "description": "micro services project",
   "private": false,
   "dependencies": {
     "axios": "^0.24.0",

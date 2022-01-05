@@ -6,23 +6,17 @@ body {
   font-family: "Raleway", Arial, sans-serif;
 }
 
-body .nomargin-bottom {
-  margin-bottom: 0;
+body .margin {
+  margin: 1em;
+  font-size: 200%;
+}
+
+a:hover, a:focus {
+  color: #37474f;
 }
 
 .nomargin-top {
   margin-bottom: 1em;
-}
-
-.bgcolor-1 {
-  font-size: 150%;
-  padding: 3em 0;
-  background: #f0efee;
-}
-
-.bgcolor-2 {
-  background: #d0d6d6;
-  padding: 3em 0;
 }
 
 .container {
@@ -34,6 +28,7 @@ body .nomargin-bottom {
 .con-header {
   padding: 3em 190px 4em;
   letter-spacing: -1px;
+  background: #f0efee;
 }
 
 .con-header h1 {
@@ -56,24 +51,11 @@ body .nomargin-bottom {
   font-size: 30%;
   font-weight: 400;
   padding: 0em 0 0.2em 0;
-  color: #606375;
+  color: #37474f;
 }
 
 .content {
-  font-size: 10px;
-}
-
-textarea {
-  resize: none;
-  width: 100%;
-  float: right;
-  text-align: right;
-  -webkit-writing-mode: horizontal-tb !important;
-  font-family: "Arial", Arial, sans-serif;
-}
-
-textarea::-webkit-scrollbar {
-  display: none;
+  font-size: 150%;
 }
 
 .input {
@@ -81,6 +63,7 @@ textarea::-webkit-scrollbar {
   z-index: 1;
   display: inline-block;
   margin: 1em;
+  max-width: 350px;
   width: calc(100% - 2em);
   vertical-align: top;
 }
@@ -89,8 +72,8 @@ textarea::-webkit-scrollbar {
   position: relative;
   display: block;
   float: right;
-  padding: 0 1em;
-  width: 100%;
+  padding: 0.8em;
+  width: 60%;
   border: none;
   border-radius: 0;
   background: #f0f0f0;
@@ -99,7 +82,6 @@ textarea::-webkit-scrollbar {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-appearance: none;
   /* for box shadows to show on iOS */
-  text-align: right;
 }
 
 .input__field:focus {
@@ -109,13 +91,15 @@ textarea::-webkit-scrollbar {
 .input__label {
   display: inline-block;
   float: right;
-  padding: 0 1em;
-  color: #6a7989;
+  width: 40%;
+  color: #37474f;
   font-weight: bold;
+  font-size: 70.25%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
+  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -128,40 +112,42 @@ textarea::-webkit-scrollbar {
   width: 100%;
 }
 
+.graphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: none;
+}
+
+.icon {
+  color: #ddd;
+  font-size: 150%;
+}
+
+/* Individual styles */
+/* Haruki */
 .input--haruki {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  max-width: 60%;
-  width: calc(100% - 2em);
-  font-size: 1.05em;
-  vertical-align: top;
-  margin: 2em 1em 1em;
+  margin: 1.5em 1em 1em;
 }
 
 .input__field--haruki {
-  text-align: right;
-  float: right;
   padding: 0.4em 0.25em;
   width: 100%;
-  height: 100px;
   background: transparent;
-  color: #AFB5BB;
-  font-size: 18px;
-  left: 5%;
+  color: #404d5b;
+  font-size: 1.55em;
+  text-align: center;
 }
 
 .input__label--haruki {
-  font-size: 1.05em;
   position: absolute;
   width: 100%;
   text-align: left;
   pointer-events: none;
+  text-align: center;
 }
 
 .input__label-content--haruki {
-  text-align: right;
-  float: right;
   -webkit-transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
 }
@@ -170,11 +156,11 @@ textarea::-webkit-scrollbar {
 .input__label--haruki::after {
   content: "";
   position: absolute;
-  right: 0;
+  left: 0;
   z-index: -1;
   width: 100%;
   height: 4px;
-  background: #6a7989;
+  background: #37474f;
   -webkit-transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
 }
@@ -205,147 +191,49 @@ textarea::-webkit-scrollbar {
   transform: translate3d(0, 0.5em, 0);
 }
 
-.sentence {
-  text-align: right;
+/* Box colors */
+.bg-1 {
+  color: #37474f;
+  background: #d0d6d6;
   position: relative;
+  z-index: 1;
   display: inline-block;
-  max-width: 60%;
-  width: calc(100% - 2em);
-  font-size: 1.05em;
-  vertical-align: top;
-  margin: 0.5em -1em;
-  background: #404d5b;
-  border-radius: 5px;
-  color: #fff;
-  padding: 10px;
-}
-
-.word {
-  border-top: 1px solid #fff;
-  padding: 5px;
-  margin: 0.4em 0.2em;
-}
-
-.button--nina {
-  cursor: pointer;
-  padding: 0 2em;
-  background: #404d5b;
-  color: #fff;
-  overflow: hidden;
-  -webkit-transition: background-color 0.3s;
-  transition: background-color 0.3s;
-}
-
-.button--nina > span {
-  display: inline-block;
-  padding: 1em 0;
-  opacity: 0;
-  color: #fff;
-  font-size: 20px;
-  -webkit-transform: translate3d(0, -10px, 0);
-  transform: translate3d(0, -10px, 0);
-  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-  transition: transform 0.3s, opacity 0.3s;
-  -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-}
-
-.button--nina::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
+  padding: 1em;
   width: 100%;
-  padding: 1em 0;
-  font-size: 20px;
-  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-  transition: transform 0.3s, opacity 0.3s;
-  -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
 }
 
-.button--nina:hover {
-  background-color: #404d5b;
+.bg-2 {
+  color: #37474f;
+  background: #bdcde5;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 1em;
+  width: 100%;
 }
 
-.button--nina:hover::before {
-  opacity: 0;
-  -webkit-transform: translate3d(0, 100%, 0);
-  transform: translate3d(0, 100%, 0);
+.center {
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
-.button--nina:hover > span {
-  opacity: 1;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-.button--nina:hover > span:nth-last-child(1) {
-  -webkit-transition-delay: 0.045s;
-  transition-delay: 0.045s;
-}
-
-.button--nina:hover > span:nth-last-child(2) {
-  -webkit-transition-delay: 0.09s;
-  transition-delay: 0.09s;
-}
-
-.button--nina:hover > span:nth-last-child(3) {
-  -webkit-transition-delay: 0.135s;
-  transition-delay: 0.135s;
-}
-
-.button--nina:hover > span:nth-last-child(4) {
-  -webkit-transition-delay: 0.18s;
-  transition-delay: 0.18s;
-}
-
-.button--nina:hover > span:nth-last-child(5) {
-  -webkit-transition-delay: 0.225s;
-  transition-delay: 0.225s;
-}
-
-.button--nina:hover > span:nth-last-child(6) {
-  -webkit-transition-delay: 0.27s;
-  transition-delay: 0.27s;
-}
-
-.button--nina:hover > span:nth-last-child(7) {
-  -webkit-transition-delay: 0.315s;
-  transition-delay: 0.315s;
-}
-
-.button--nina:hover > span:nth-last-child(8) {
-  -webkit-transition-delay: 0.36s;
-  transition-delay: 0.36s;
-}
-
-.button--nina:hover > span:nth-last-child(9) {
-  -webkit-transition-delay: 0.405s;
-  transition-delay: 0.405s;
-}
-
-.button--nina:hover > span:nth-last-child(10) {
-  -webkit-transition-delay: 0.45s;
-  transition-delay: 0.45s;
-}
-
+/* Common button styles */
 .button {
-  border-radius: 5px;
-  border: 1px solid #404d5b;
-  margin: 0 auto;
-  margin-top: 2em;
-  max-width: 50%;
-  width: 30%;
+  float: left;
+  min-width: 150px;
+  max-width: 250px;
   display: block;
+  margin: 1em;
+  padding: 1em 2em;
+  border: none;
   background: none;
-  vertical-align: top;
+  color: inherit;
+  vertical-align: middle;
   position: relative;
   z-index: 1;
   -webkit-backface-visibility: hidden;
   -moz-osx-font-smoothing: grayscale;
-  background: #c3c8cd;
-  color: #404d5b;
 }
 
 .button:focus {
@@ -356,17 +244,120 @@ textarea::-webkit-scrollbar {
   vertical-align: middle;
 }
 
+/* Text color adjustments (we could stick to the "inherit" but that does not work well in Safari) */
+.bg-1 .button {
+  color: #37474f;
+  border-color: #37474f;
+}
+
+.bg-2 .button {
+  color: #37474f;
+  border-color: #37474f;
+}
+
+/* Sizes */
+.button--size-s {
+  font-size: 14px;
+}
+
+.button--size-m {
+  font-size: 16px;
+}
+
+.button--size-l {
+  font-size: 18px;
+}
+
+/* Typography and Roundedness */
 .button--text-upper {
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+.button--text-thin {
+  font-weight: 300;
+}
+
+.button--text-medium {
+  font-weight: 500;
 }
 
 .button--text-thick {
   font-weight: 600;
 }
 
-.button--size-s {
-  font-size: 14px;
+.button--round-s {
+  border-radius: 5px;
+}
+
+.button--round-m {
+  border-radius: 15px;
+}
+
+.button--round-l {
+  border-radius: 40px;
+}
+
+/* Borders */
+.button--border-thin {
+  border: 1px solid;
+}
+
+.button--border-medium {
+  border: 2px solid;
+}
+
+.button--border-thick {
+  border: 3px solid;
+}
+
+.button--wayra {
+  overflow: hidden;
+  width: 245px;
+  -webkit-transition: border-color 0.3s, color 0.3s;
+  transition: border-color 0.3s, color 0.3s;
+  -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.button--wayra::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 100%;
+  background: #37474f;
+  z-index: -1;
+  -webkit-transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+  transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+  -webkit-transform-origin: 0% 100%;
+  transform-origin: 0% 100%;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.3s;
+  transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+}
+
+.button--wayra:hover {
+  color: #fff;
+  border-color: #37474f;
+}
+
+.button--wayra.button--inverted:hover {
+  color: #37474f;
+  border-color: #fff;
+}
+
+.button--wayra:hover::before {
+  opacity: 1;
+  background-color: #37474f;
+  -webkit-transform: rotate3d(0, 0, 1, 0deg);
+  transform: rotate3d(0, 0, 1, 0deg);
+  -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.button--wayra.button--inverted:hover::before {
+  background-color: #fff;
 }
 
 /*# sourceMappingURL=styles.css.map */
