@@ -3,7 +3,6 @@ var http = require('http');
 var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors')
-var axios = require('axios')
 
 
 var app = express();
@@ -71,7 +70,6 @@ microservice2.post('/token', function(req, res) {
 		if (index !== -1) {
 			array.splice(index, 1);
 		}
-		console.log(array);
 		res.status(200).send(array);
 	}
 	else
@@ -111,12 +109,9 @@ microservice4.post('/token', function(req, res) {
 				var temp = array[parseInt(swap[0])]
 				array[parseInt(swap[0])] = array[parseInt(swap[1])]
 				array[parseInt(swap[1])] = temp;
+				res.status(200).send(array);
 			}
 		}
-		if (req.body.body[1] < array.length) {
-			array.splice(req.body.body[1], 1);
-		}
-		res.status(200).send(array);
 	}
 	else
 	{
