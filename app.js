@@ -125,13 +125,11 @@ microservice4.post('/token', function(req, res) {
 });
 
 microservice5.post('/token', function(req, res) {
-	var array = [];
-	res.status(200).send(array);
+	res.status(200).send([]);
 });
 
 microservice6.post('/token', function(req, res) {
 	var array = req.body.body[0];
-	console.log(array.length);
 	res.status(200).send(array.length.toString());
 });
 
