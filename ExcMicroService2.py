@@ -5,7 +5,7 @@ import json
 
 # create the Flask app
 microservice2 = Flask(__name__)
-cors = CORS(microservice2
+cors = CORS(microservice2)
 
 @microservice2.route('/token', methods=['POST'])
 def token():
